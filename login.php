@@ -14,12 +14,16 @@
         // 아이디/패스워드 빈 값인지 확인
         if(empty($id) || empty($password)) {
             echo "<script>alert('아이디와 패스워드를 입력하세요.');history.back(-1);</script>";
+            exit();
         }else {
             // 아이디와 패스워드 일치 여부 확인
             if($id == $input_id && $password == base64_decode($input_password)) {
-                echo "<p>Login Success! Hello $id!</p>";
+                echo "<p>Login Success! Hello $id!</p><a href='login.php'>Back</a>";
+
+                exit();
             } else {
-                echo "<p>Login Failed!</p>";
+                echo "<p>Login Failed!</p><a href='login.php'>Retry</a>";
+                exit();
                 
             }
         }
